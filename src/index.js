@@ -16,14 +16,12 @@ addTaskButton.addEventListener('click', () => {
 });
 
 taskInput.addEventListener('keydown', (event) => {
-  if (event.keyCode === 13) {
-    const description = taskInput.value.trim();
-    if (description !== '') {
-      addTask(description);
-      renderTasks();
-      taskInput.value = '';
-    }
-  }
+  const description = taskInput.value.trim();
+  if (event.key === 'Enter' && description !== '') {
+    addTask(description);
+    renderTasks();
+    taskInput.value = '';
+  }  
 });
 
 clearButton.addEventListener('click', () => {
