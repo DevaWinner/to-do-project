@@ -1,36 +1,22 @@
 import './style.css';
+import {
+  addTask, deleteTask, editTask, saveTasksToLocalStorage, loadTasksFromLocalStorage,
+} from './todo.js';
 
-const tasks = [
-  {
-    description: 'Read a journal paper',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Practice a new song',
-    completed: true,
-    index: 2,
-  },
-  {
-    description: 'Dance to a new song',
-    completed: false,
-    index: 3,
-  },
-  {
-    description: 'Watch a new movie',
-    completed: false,
-    index: 4,
-  },
-];
+const todoList = document.getElementById('todo-list');
+const taskInput = document.getElementById('task-input');
+const addTaskButton = document.getElementById('add-task-button');
+const clearButton = document.getElementById('clear-button');
 
 const renderTasks = () => {
-  const todoList = document.getElementById('todo-list');
+  todoList.innerHTML = '';
 
-  tasks.sort((a, b) => a.index - b.index);
+  const tasks = loadTasksFromLocalStorage();
 
-  tasks.forEach((task) => {
+  tasks.forEach((task, index) => {
     const listItem = document.createElement('li');
     listItem.className = 'task-item';
+    listItem.dataset.index = index;
 
     const taskWrapper = document.createElement('div');
     taskWrapper.className = 'task-wrapper';
@@ -38,6 +24,7 @@ const renderTasks = () => {
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.className = 'checkbox';
+    checkbox.checked = task.completed;
     taskWrapper.appendChild(checkbox);
 
     const taskText = document.createElement('p');
@@ -52,9 +39,72 @@ const renderTasks = () => {
     kebabMenu.className = 'bx bx-dots-vertical-rounded';
     taskWrapper.appendChild(kebabMenu);
 
+    const deleteButton = document.createElement('i');
+    deleteButton.className = 'bx bx-trash delete-button';
+    taskWrapper.appendChild(deleteButton);
+
     listItem.appendChild(taskWrapper);
     todoList.appendChild(listItem);
   });
+
+  saveTasksToLocalStorage(tasks);
 };
+
+addTaskButton.addEventListener('click', () => {
+  const description = taskInput.value.trim();
+  if (description !== '') {
+    addTask(description);
+    renderTasks();
+    taskInput.value = '';
+  }
+});
+
+taskInput.addEventListener('keydown', (event) => {
+  const description = taskInput.value.trim();
+  if (event.key === 'Enter' && description !== '') {
+    addTask(description);
+    renderTasks();
+    taskInput.value = '';
+  }
+});
+
+clearButton.addEventListener('click', () => {
+  todoList.innerHTML = '';
+  deleteTask();
+  renderTasks();
+});
+
+todoList.addEventListener('click', (event) => {
+  const { target } = event;
+  if (target.classList.contains('bx-dots-vertical-rounded')) {
+    const taskWrapper = target.parentNode;
+    taskWrapper.classList.toggle('show-delete');
+  } else if (target.classList.contains('delete-button')) {
+    const listItem = target.closest('.task-item');
+    const index = Number(listItem.dataset.index);
+    deleteTask(index);
+    renderTasks();
+  }
+});
+
+todoList.addEventListener('dblclick', (event) => {
+  const { target } = event;
+  if (target.classList.contains('task-text')) {
+    target.contentEditable = true;
+    target.focus();
+  }
+});
+
+todoList.addEventListener('blur', (event) => {
+  const { target } = event;
+  if (target.classList.contains('task-text')) {
+    target.contentEditable = false;
+    const listItem = target.closest('.task-item');
+    const index = Number(listItem.dataset.index);
+    const description = target.innerText.trim();
+    editTask(index, description);
+    renderTasks();
+  }
+}, true);
 
 document.addEventListener('DOMContentLoaded', renderTasks);

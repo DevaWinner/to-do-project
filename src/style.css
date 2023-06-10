@@ -55,7 +55,7 @@ ul {
 }
 
 li {
-  padding: 15px;
+  padding: 0 20px;
   border-bottom: 1px solid #ccc;
 }
 
@@ -63,12 +63,11 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
 }
 
 .task-text {
   flex-grow: 1;
-  padding-left: 9px;
+  padding: 15px 0 15px 9px;
 }
 
 .clear-button {
@@ -80,4 +79,12 @@ li {
   background-color: #ccc;
   border: none;
   cursor: pointer;
+}
+
+.task-wrapper .delete-button {
+  display: none;
+}
+
+.task-wrapper.show-delete .delete-button {
+  display: block;
 }
