@@ -71,7 +71,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-coming soon...
+- [Live View](https://devawinner.github.io/to-do-project/dist/) 
 
 
 ## 💻 Getting Started <a name="getting-started"></a>
