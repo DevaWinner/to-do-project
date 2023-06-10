@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+
+    <link rel="stylesheet" href="./style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <main> 
+    <section class="todo-container">
+      <p class="heading">Today's To Do</p>
+      <div id="todo-app">
+        <div class="input-container">
+          <input type="text" id="task-input" placeholder="Add to your to do list.....">
+          <i class='bx bx-subdirectory-left' id="add-task-button"></i>
+        </div>
+        <ul id="todo-list"></ul>
+        <button id="clear-button" class="clear-button" type="button">Clear</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="./index.js"></script>
+</body>
+</html>
