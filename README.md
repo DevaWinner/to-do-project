@@ -63,6 +63,7 @@
 ### Key Features <a name="key-features"></a>
 
 - **Display Dynamic To do List**
+- **Check completed task**
 - **Add, Remove, edit task and clear task**
 - **Webpack bundling source files**
 
@@ -120,6 +121,7 @@ In order to run this project you need:
 - [ ] **Implement remove elements**
 - [ ] **Implement add elements**
 - [ ] **Implement edit elements**
+- [ ] **Implement check completed task**
 - [ ] **Implement local storage of list items**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
