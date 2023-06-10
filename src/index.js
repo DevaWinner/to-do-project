@@ -1,12 +1,14 @@
 import './style.css';
 import {
-  addTask, deleteTask, editTask, saveTasksToLocalStorage, loadTasksFromLocalStorage,
+  loadTasksFromLocalStorage, saveTasksToLocalStorage, addTask, deleteTask, editTask,
 } from './todo.js';
+import updateTaskStatus from './status.js';
 
 const todoList = document.getElementById('todo-list');
 const taskInput = document.getElementById('task-input');
 const addTaskButton = document.getElementById('add-task-button');
 const clearButton = document.getElementById('clear-button');
+let createCheckbox;
 
 const renderTasks = () => {
   todoList.innerHTML = '';
@@ -21,10 +23,7 @@ const renderTasks = () => {
     const taskWrapper = document.createElement('div');
     taskWrapper.className = 'task-wrapper';
 
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.className = 'checkbox';
-    checkbox.checked = task.completed;
+    const checkbox = createCheckbox(task.completed, index);
     taskWrapper.appendChild(checkbox);
 
     const taskText = document.createElement('p');
@@ -50,6 +49,28 @@ const renderTasks = () => {
   saveTasksToLocalStorage(tasks);
 };
 
+createCheckbox = (checked, index) => {
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.className = 'checkbox';
+  checkbox.checked = checked;
+
+  checkbox.addEventListener('change', (event) => {
+    const { checked } = event.target;
+    updateTaskStatus(index, checked);
+    renderTasks();
+  });
+
+  return checkbox;
+};
+
+const clearCompletedTasks = () => {
+  const tasks = loadTasksFromLocalStorage();
+  const updatedTasks = tasks.filter((task) => !task.completed);
+  saveTasksToLocalStorage(updatedTasks);
+  renderTasks();
+};
+
 addTaskButton.addEventListener('click', () => {
   const description = taskInput.value.trim();
   if (description !== '') {
@@ -68,11 +89,7 @@ taskInput.addEventListener('keydown', (event) => {
   }
 });
 
-clearButton.addEventListener('click', () => {
-  todoList.innerHTML = '';
-  deleteTask();
-  renderTasks();
-});
+clearButton.addEventListener('click', clearCompletedTasks);
 
 todoList.addEventListener('click', (event) => {
   const { target } = event;
