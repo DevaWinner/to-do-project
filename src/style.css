@@ -81,3 +81,11 @@ li {
   border: none;
   cursor: pointer;
 }
+
+.task-wrapper .delete-button {
+  display: none;
+}
+
+.task-wrapper.show-delete .delete-button {
+  display: block;
+}

@@ -18,3 +18,16 @@ export const addTask = (description) => {
   tasks.push(newTask);
   saveTasksToLocalStorage(tasks);
 };
+
+export const deleteTask = (index) => {
+  const tasks = loadTasksFromLocalStorage();
+  if (typeof index === 'undefined') {
+    tasks.length = 0;
+  } else {
+    tasks.splice(index, 1);
+    tasks.forEach((task, i) => {
+      task.index = i + 1;
+    });
+  }
+  saveTasksToLocalStorage(tasks);
+};
