@@ -20,9 +20,9 @@ export const addTask = (description) => {
 };
 
 export const deleteTask = (index) => {
-  const tasks = loadTasksFromLocalStorage();
+  let tasks = loadTasksFromLocalStorage();
   if (typeof index === 'undefined') {
-    tasks.length = 0;
+    tasks = [];
   } else {
     tasks.splice(index, 1);
     tasks.forEach((task, i) => {
