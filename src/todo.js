@@ -31,3 +31,9 @@ export const deleteTask = (index) => {
   }
   saveTasksToLocalStorage(tasks);
 };
+
+export const editTask = (index, description) => {
+  const tasks = loadTasksFromLocalStorage();
+  tasks[index].description = description;
+  saveTasksToLocalStorage(tasks);
+};
