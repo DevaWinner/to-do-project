@@ -1,5 +1,7 @@
 import './style.css';
-import { addTask, deleteTask, editTask, saveTasksToLocalStorage, loadTasksFromLocalStorage } from './todo';
+import {
+  addTask, deleteTask, editTask, saveTasksToLocalStorage, loadTasksFromLocalStorage,
+} from './todo';
 
 const todoList = document.getElementById('todo-list');
 const taskInput = document.getElementById('task-input');
@@ -21,7 +23,7 @@ taskInput.addEventListener('keydown', (event) => {
     addTask(description);
     renderTasks();
     taskInput.value = '';
-  }  
+  }
 });
 
 clearButton.addEventListener('click', () => {
@@ -31,7 +33,7 @@ clearButton.addEventListener('click', () => {
 });
 
 todoList.addEventListener('click', (event) => {
-  const target = event.target;
+  const { target } = event;
   if (target.classList.contains('bx-dots-vertical-rounded')) {
     const taskWrapper = target.parentNode;
     taskWrapper.classList.toggle('show-delete');
@@ -44,7 +46,7 @@ todoList.addEventListener('click', (event) => {
 });
 
 todoList.addEventListener('dblclick', (event) => {
-  const target = event.target;
+  const { target } = event;
   if (target.classList.contains('task-text')) {
     target.contentEditable = true;
     target.focus();
@@ -52,7 +54,7 @@ todoList.addEventListener('dblclick', (event) => {
 });
 
 todoList.addEventListener('blur', (event) => {
-  const target = event.target;
+  const { target } = event;
   if (target.classList.contains('task-text')) {
     target.contentEditable = false;
     const listItem = target.closest('.task-item');
