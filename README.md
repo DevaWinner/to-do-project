@@ -28,8 +28,6 @@
 
 ### Tech Stack <a name="tech-stack"></a>
 
-This project is entirely built with HTML & CSS
-
 <details>
   <summary>Frontend</summary>
   <ul>
@@ -65,6 +63,7 @@ This project is entirely built with HTML & CSS
 ### Key Features <a name="key-features"></a>
 
 - **Display Dynamic To do List**
+- **Add, Remove, edit task and clear task**
 - **Webpack bundling source files**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -119,6 +118,8 @@ In order to run this project you need:
 
 - [ ] **Display Stored To do list**
 - [ ] **Implement remove elements**
+- [ ] **Implement add elements**
+- [ ] **Implement edit elements**
 - [ ] **Implement local storage of list items**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
