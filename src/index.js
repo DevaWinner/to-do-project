@@ -43,16 +43,25 @@ todoList.addEventListener('click', (event) => {
   }
 });
 
-todoList.addEventListener('input', (event) => {
+todoList.addEventListener('dblclick', (event) => {
   const target = event.target;
   if (target.classList.contains('task-text')) {
+    target.contentEditable = true;
+    target.focus();
+  }
+});
+
+todoList.addEventListener('blur', (event) => {
+  const target = event.target;
+  if (target.classList.contains('task-text')) {
+    target.contentEditable = false;
     const listItem = target.closest('.task-item');
     const index = Number(listItem.dataset.index);
-    const description = target.innerText;
+    const description = target.innerText.trim();
     editTask(index, description);
     renderTasks();
   }
-});
+}, true);
 
 const renderTasks = () => {
   todoList.innerHTML = '';
