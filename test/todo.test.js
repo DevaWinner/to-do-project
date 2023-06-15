@@ -26,3 +26,8 @@ const { document } = new JSDOM('<!DOCTYPE html><html><body></body></html>').wind
 global.document = document;
 global.window = document.defaultView;
 
+// Then I wil mock the dom
+const taskList = document.createElement('ul');
+taskList.id = 'todo-list';
+document.body.appendChild(taskList);
+
