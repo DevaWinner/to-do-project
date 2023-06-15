@@ -50,3 +50,22 @@ describe('addTask', () => {
     });
   });
 });
+
+describe('deleteTask', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  test('deletes a task from localStorage', () => {
+    addTask('Test task');
+    deleteTask(0);
+    expect(localStorage.setItem).toHaveBeenCalledWith('tasks', '[]');
+  });
+
+  test('deletes all tasks from localStorage', () => {
+    addTask('Test task');
+    addTask('Test task 2');
+    deleteTask();
+    expect(localStorage.setItem).toHaveBeenCalledWith('tasks', '[]');
+  });
+});
