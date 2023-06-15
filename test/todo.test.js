@@ -1,5 +1,5 @@
-import { addTask, deleteTask } from '../src/todo.js';
 import { JSDOM } from 'jsdom';
+import { addTask, deleteTask } from '../src/todo.js';
 
 // First, I will Mock localStorage
 const localStorageMock = (() => {

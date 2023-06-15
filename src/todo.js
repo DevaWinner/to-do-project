@@ -17,7 +17,7 @@ export const addTask = (description) => {
   };
   tasks.push(newTask);
   saveTasksToLocalStorage(tasks);
-  return newTask; 
+  return newTask;
 };
 
 export const deleteTask = (index) => {

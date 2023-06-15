@@ -112,4 +112,16 @@ todoList.addEventListener('click', (event) => {
   }
 });
 
+todoList.addEventListener('blur', (event) => {
+  const { target } = event;
+  if (target.classList.contains('task-text')) {
+    target.contentEditable = false;
+    const listItem = target.closest('.task-item');
+    const index = Number(listItem.dataset.index);
+    const description = target.innerText.trim();
+    editTask(index, description);
+    renderTasks();
+  }
+}, true);
+
 document.addEventListener('DOMContentLoaded', renderTasks);
