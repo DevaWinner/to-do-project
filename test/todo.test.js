@@ -20,3 +20,9 @@ const localStorageMock = (() => {
 })();
 
 Object.defineProperty(global, 'localStorage', { value: localStorageMock });
+
+// Then I will Set up a simulated DOM environment
+const { document } = new JSDOM('<!DOCTYPE html><html><body></body></html>').window;
+global.document = document;
+global.window = document.defaultView;
+
