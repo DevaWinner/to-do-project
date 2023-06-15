@@ -31,3 +31,22 @@ const taskList = document.createElement('ul');
 taskList.id = 'todo-list';
 document.body.appendChild(taskList);
 
+describe('addTask', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  test('adds a task to localStorage', () => {
+    addTask('Test task');
+    expect(localStorage.setItem).toHaveBeenCalledWith('tasks', '[{"description":"Test task","completed":false,"index":1}]');
+  });
+
+  test('returns the new task', () => {
+    const newTask = addTask('Test task');
+    expect(newTask).toEqual({
+      description: 'Test task',
+      completed: false,
+      index: 1,
+    });
+  });
+});
