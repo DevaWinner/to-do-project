@@ -17,12 +17,13 @@ export const addTask = (description) => {
   };
   tasks.push(newTask);
   saveTasksToLocalStorage(tasks);
+  return newTask; 
 };
 
 export const deleteTask = (index) => {
-  let tasks = loadTasksFromLocalStorage();
+  const tasks = loadTasksFromLocalStorage();
   if (typeof index === 'undefined') {
-    tasks = [];
+    tasks.length = 0;
   } else {
     tasks.splice(index, 1);
     tasks.forEach((task, i) => {

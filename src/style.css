@@ -45,6 +45,10 @@ body {
   font-style: italic;
 }
 
+.input-container input:focus {
+  outline: none;
+}
+
 .input-container i {
   font-size: 20px;
   cursor: pointer;
@@ -86,5 +90,9 @@ li {
 }
 
 .task-wrapper.show-delete .delete-button {
+  display: block;
+}
+
+.show {
   display: block;
 }

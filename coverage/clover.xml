@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1686836987423" clover="3.2.0">
+  <project timestamp="1686836987424" name="All files">
+    <metrics statements="24" coveredstatements="20" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="4" elements="34" coveredelements="28" complexity="0" loc="24" ncloc="24" packages="1" files="1" classes="1"/>
+    <file name="todo.js" path="/home/winner/Desktop/Microverse/Module-2/Block-2/to-do-project/src/todo.js">
+      <metrics statements="24" coveredstatements="20" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="4"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="7" type="stmt"/>
+      <line num="3" count="7" type="cond" truecount="2" falsecount="0"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="7" count="7" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="11" count="5" type="stmt"/>
+      <line num="12" count="5" type="stmt"/>
+      <line num="13" count="5" type="stmt"/>
+      <line num="18" count="5" type="stmt"/>
+      <line num="19" count="5" type="stmt"/>
+      <line num="20" count="5" type="stmt"/>
+      <line num="23" count="1" type="stmt"/>
+      <line num="24" count="2" type="stmt"/>
+      <line num="25" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="26" count="1" type="stmt"/>
+      <line num="28" count="1" type="stmt"/>
+      <line num="29" count="1" type="stmt"/>
+      <line num="30" count="0" type="stmt"/>
+      <line num="33" count="2" type="stmt"/>
+      <line num="36" count="1" type="stmt"/>
+      <line num="37" count="0" type="stmt"/>
+      <line num="38" count="0" type="stmt"/>
+      <line num="39" count="0" type="stmt"/>
+    </file>
+  </project>
+</coverage>

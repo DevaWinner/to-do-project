@@ -104,24 +104,12 @@ todoList.addEventListener('click', (event) => {
   }
 });
 
-todoList.addEventListener('dblclick', (event) => {
+todoList.addEventListener('click', (event) => {
   const { target } = event;
   if (target.classList.contains('task-text')) {
     target.contentEditable = true;
     target.focus();
   }
 });
-
-todoList.addEventListener('blur', (event) => {
-  const { target } = event;
-  if (target.classList.contains('task-text')) {
-    target.contentEditable = false;
-    const listItem = target.closest('.task-item');
-    const index = Number(listItem.dataset.index);
-    const description = target.innerText.trim();
-    editTask(index, description);
-    renderTasks();
-  }
-}, true);
 
 document.addEventListener('DOMContentLoaded', renderTasks);
