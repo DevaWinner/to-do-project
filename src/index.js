@@ -104,7 +104,7 @@ todoList.addEventListener('click', (event) => {
   }
 });
 
-todoList.addEventListener('dblclick', (event) => {
+todoList.addEventListener('click', (event) => {
   const { target } = event;
   if (target.classList.contains('task-text')) {
     target.contentEditable = true;
