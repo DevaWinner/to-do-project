@@ -64,13 +64,6 @@ createCheckbox = (checked, index) => {
   return checkbox;
 };
 
-const clearCompletedTasks = () => {
-  const tasks = loadTasksFromLocalStorage();
-  const updatedTasks = tasks.filter((task) => !task.completed);
-  saveTasksToLocalStorage(updatedTasks);
-  renderTasks();
-};
-
 addTaskButton.addEventListener('click', () => {
   const description = taskInput.value.trim();
   if (description !== '') {
@@ -88,6 +81,13 @@ taskInput.addEventListener('keydown', (event) => {
     taskInput.value = '';
   }
 });
+
+const clearCompletedTasks = () => {
+  const tasks = loadTasksFromLocalStorage();
+  const updatedTasks = tasks.filter((task) => !task.completed);
+  saveTasksToLocalStorage(updatedTasks);
+  renderTasks();
+};
 
 clearButton.addEventListener('click', clearCompletedTasks);
 

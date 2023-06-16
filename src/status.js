@@ -5,4 +5,5 @@ const updateTaskStatus = (index, completed) => {
   tasks[index].completed = completed;
   saveTasksToLocalStorage(tasks);
 };
+
 export default updateTaskStatus;
