@@ -54,3 +54,15 @@ describe('editTask', () => {
     });
   });
 });
+
+describe('updateTaskStatus', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  test('updates a task status in localStorage', () => {
+    localStorage.setItem('tasks', '[{"description":"Test task","completed":false,"index":1}]');
+    updateTaskStatus(0, true);
+    expect(localStorage.setItem).toHaveBeenCalledWith('tasks', '[{"description":"Test task","completed":true,"index":1}]');
+  });
+});
