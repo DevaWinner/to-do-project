@@ -2,7 +2,7 @@ import './style.css';
 import {
   loadTasksFromLocalStorage, saveTasksToLocalStorage, addTask, deleteTask, editTask,
 } from './todo.js';
-import updateTaskStatus from './status.js';
+import {updateTaskStatus} from './status.js';
 
 const todoList = document.getElementById('todo-list');
 const taskInput = document.getElementById('task-input');
@@ -64,13 +64,6 @@ createCheckbox = (checked, index) => {
   return checkbox;
 };
 
-const clearCompletedTasks = () => {
-  const tasks = loadTasksFromLocalStorage();
-  const updatedTasks = tasks.filter((task) => !task.completed);
-  saveTasksToLocalStorage(updatedTasks);
-  renderTasks();
-};
-
 addTaskButton.addEventListener('click', () => {
   const description = taskInput.value.trim();
   if (description !== '') {
@@ -88,6 +81,13 @@ taskInput.addEventListener('keydown', (event) => {
     taskInput.value = '';
   }
 });
+
+export const clearCompletedTasks = () => {
+  const tasks = loadTasksFromLocalStorage();
+  const updatedTasks = tasks.filter((task) => !task.completed);
+  saveTasksToLocalStorage(updatedTasks);
+  renderTasks();
+};
 
 clearButton.addEventListener('click', clearCompletedTasks);
 

@@ -33,8 +33,14 @@ export const deleteTask = (index) => {
   saveTasksToLocalStorage(tasks);
 };
 
-export const editTask = (index, description) => {
-  const tasks = loadTasksFromLocalStorage();
-  tasks[index].description = description;
-  saveTasksToLocalStorage(tasks);
-};
+export function editTask(index, newDescription) {
+  const tasks = JSON.parse(localStorage.getItem('tasks'));
+
+  if (tasks && index >= 0 && index < tasks.length) {
+    tasks[index].description = newDescription;
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    return tasks[index];
+  }
+
+  return null;
+}
