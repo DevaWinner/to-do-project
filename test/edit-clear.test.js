@@ -66,3 +66,15 @@ describe('updateTaskStatus', () => {
     expect(localStorage.setItem).toHaveBeenCalledWith('tasks', '[{"description":"Test task","completed":true,"index":1}]');
   });
 });
+
+describe('clearCompletedTasks', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  test('clears completed tasks from localStorage', () => {
+    localStorage.setItem('tasks', '[{"description":"Test task","completed":true,"index":1}]');
+    clearCompletedTasks();
+    expect(localStorage.setItem).toHaveBeenCalledWith('tasks', '[]');
+  });
+});
