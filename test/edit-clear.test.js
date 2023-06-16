@@ -32,3 +32,25 @@ global.window = document.defaultView;
 const taskList = document.createElement('ul');
 taskList.id = 'todo-list';
 document.body.appendChild(taskList);
+
+describe('editTask', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  test('edits a task in localStorage', () => {
+    localStorage.setItem('tasks', '[{"description":"Test task","completed":false,"index":1}]');
+    editTask(0, 'Edited task');
+    expect(localStorage.setItem).toHaveBeenCalledWith('tasks', '[{"description":"Edited task","completed":false,"index":1}]');
+  });
+
+  test('returns the edited task', () => {
+    localStorage.setItem('tasks', '[{"description":"Test task","completed":false,"index":1}]');
+    const editedTask = editTask(0, 'Edited task');
+    expect(editedTask).toEqual({
+      description: 'Edited task',
+      completed: false,
+      index: 1,
+    });
+  });
+});
