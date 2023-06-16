@@ -27,3 +27,8 @@ Object.defineProperty(global, 'localStorage', { value: localStorageMock });
 const { document } = new JSDOM('<!DOCTYPE html><html><body></body></html>').window;
 global.document = document;
 global.window = document.defaultView;
+
+// Then I wil mock the dom
+const taskList = document.createElement('ul');
+taskList.id = 'todo-list';
+document.body.appendChild(taskList);
